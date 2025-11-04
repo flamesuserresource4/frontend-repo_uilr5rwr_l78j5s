@@ -3,36 +3,7 @@
 > vite
 
 
-  VITE v5.4.20  ready in 328 ms
+  VITE v5.4.20  ready in 322 ms
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.20.36.241:3000/
-2:36:42 AM [vite] Pre-transform error: Transform failed with 1 error:
-/home/workspace/src/components/Showcase.jsx:5:240: ERROR: Expected ";" but found "{"
-2:36:43 AM [vite] ✨ new dependencies optimized: lucide-react
-2:36:43 AM [vite] ✨ optimized dependencies changed. reloading
-2:36:44 AM [vite] Pre-transform error: Transform failed with 1 error:
-/home/workspace/src/components/Showcase.jsx:5:240: ERROR: Expected ";" but found "{"
-2:36:46 AM [vite] Internal server error: Transform failed with 1 error:
-/home/workspace/src/components/Showcase.jsx:5:240: ERROR: Expected ";" but found "{"
-  Plugin: vite:esbuild
-  File: /home/workspace/src/components/Showcase.jsx:5:240
-  
-  Expected ";" but found "{"
-  3  |  };
-  4  |  
-  5  |  const codeSample = `// before\nfunction fetchUser(id){return api.get('/user/'+id).then(r=>r.data)}\n\n// after (Goosy refactor)\nasync function fetchUser(id) {\n  if (!id) throw new Error('Missing id');\n  const res = await api.get(`/user/${id}`);\n  return res.data;\n}`;
-     |                                                                                                                                                                                                                                                  ^
-  6  |  
-  7  |  export default function Showcase() {
-  
-      at failureErrorWithLog (/home/workspace/node_modules/esbuild/lib/main.js:1472:15)
-      at /home/workspace/node_modules/esbuild/lib/main.js:755:50
-      at responseCallbacks.<computed> (/home/workspace/node_modules/esbuild/lib/main.js:622:9)
-      at handleIncomingPacket (/home/workspace/node_modules/esbuild/lib/main.js:677:12)
-      at Socket.readFromStdout (/home/workspace/node_modules/esbuild/lib/main.js:600:7)
-      at Socket.emit (node:events:508:28)
-      at addChunk (node:internal/streams/readable:559:12)
-      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-      at Readable.push (node:internal/streams/readable:390:5)
-      at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)

@@ -2,7 +2,7 @@ const brand = {
   primary: "#62879a",
 };
 
-const codeSample = `// before\nfunction fetchUser(id){return api.get('/user/'+id).then(r=>r.data)}\n\n// after (Goosy refactor)\nasync function fetchUser(id) {\n  if (!id) throw new Error('Missing id');\n  const res = await api.get(`/user/${id}`);\n  return res.data;\n}`;
+const codeSample = String.raw`// before\nfunction fetchUser(id){return api.get('/user/'+id).then(r=>r.data)}\n\n// after (Goosy refactor)\nasync function fetchUser(id) {\n  if (!id) throw new Error('Missing id');\n  const res = await api.get(\`/user/\${id}\`);\n  return res.data;\n}`;
 
 export default function Showcase() {
   return (
