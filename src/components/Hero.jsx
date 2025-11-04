@@ -1,4 +1,6 @@
 import { Rocket, Github, Download } from "lucide-react";
+import Spline from "@splinetool/react-spline";
+import { motion } from "framer-motion";
 
 const brand = {
   primary: "#62879a",
@@ -50,23 +52,47 @@ export default function Hero() {
         </nav>
       </header>
 
-      {/* Hero Content */}
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+      {/* Hero Content with Spline */}
+      <section className="mx-auto max-w-7xl px-6 pt-12 pb-20 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium mb-5" style={{ backgroundColor: "#e7f0f5", color: brand.primary }}>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium mb-5"
+            style={{ backgroundColor: "#e7f0f5", color: brand.primary }}
+          >
             <Rocket className="h-3.5 w-3.5" />
             Built for vibe coders in VS Code
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+            className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900"
+          >
             Goosy — your VS Code co-pilot for clean, secure code
-          </h1>
-          <p className="mt-4 text-slate-600 text-lg leading-relaxed">
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            className="mt-4 text-slate-600 text-lg leading-relaxed"
+          >
             Find vulnerabilities, refactor with confidence, and understand complexity — all without leaving your editor. Goosy brings actionable insights into your flow.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
             <a
               href="#get"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-white font-medium shadow-lg"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-white font-medium shadow-lg hover:shadow-xl transition-shadow"
               style={{ backgroundColor: brand.primary }}
             >
               <Download className="h-5 w-5" />
@@ -79,43 +105,46 @@ export default function Hero() {
             >
               Learn more
             </a>
-          </div>
-          <div className="mt-6 text-xs text-slate-500">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-6 text-xs text-slate-500"
+          >
             Free to start • Works with JavaScript, TypeScript, Python, and more
-          </div>
+          </motion.div>
         </div>
 
-        {/* Visual Card */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#e7f0f5] via-white to-transparent rounded-3xl" />
-          <div className="relative rounded-2xl border shadow-sm bg-white overflow-hidden" style={{ borderColor: "#dbe5ea" }}>
-            <div className="flex items-center gap-2 px-4 py-2 border-b" style={{ borderColor: "#eef3f6" }}>
-              <span className="h-3 w-3 rounded-full" style={{ backgroundColor: "#f43f5e" }}></span>
-              <span className="h-3 w-3 rounded-full" style={{ backgroundColor: "#f59e0b" }}></span>
-              <span className="h-3 w-3 rounded-full" style={{ backgroundColor: "#10b981" }}></span>
-              <span className="ml-2 text-xs text-slate-500">Goosy Analysis</span>
-            </div>
-            <pre className="p-4 text-sm leading-relaxed overflow-auto bg-white text-slate-800">
-{`function transfer(amount, to) {
-  if (!to) throw new Error('no recipient');
-  // FIXME: Missing input validation
-  db.save({ to, amount });
-}
-
-// Goosy Suggestion:
-// - Validate amount is positive number
-// - Sanitize 'to' identifier
-// - Extract DB call into service for testability
-`}
-            </pre>
-          </div>
-        </div>
+        {/* Spline scene container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className="relative h-[360px] sm:h-[420px] md:h-[500px] rounded-2xl overflow-hidden border shadow-sm"
+          style={{ borderColor: "#dbe5ea", background: "#0b1020" }}
+        >
+          <Spline
+            scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode"
+            style={{ width: "100%", height: "100%" }}
+          />
+          {/* soft radial highlight to blend into light theme */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(800px circle at 10% 20%, rgba(231,240,245,0.35) 0, transparent 60%), radial-gradient(600px circle at 90% 70%, rgba(98,135,154,0.25) 0, transparent 55%)",
+            }}
+          />
+        </motion.div>
       </section>
 
-      {/* Soft background */}
+      {/* Soft background behind the whole hero */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-[1]"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
             "radial-gradient(600px circle at 20% 20%, #e7f0f5 0, transparent 60%), radial-gradient(800px circle at 80% 40%, #f5fbff 0, transparent 60%)",
